@@ -28,10 +28,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   margin: 0;
   font-family: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -40,7 +36,6 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
   position: relative;
 }
 
@@ -69,6 +64,9 @@ img {
   position: relative;
   isolation: isolate;
   z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -76,6 +74,7 @@ main {
   flex-direction: column;
   gap: 1.5rem;
   align-items: stretch;
+  flex: 1;
 }
 
 .shell {

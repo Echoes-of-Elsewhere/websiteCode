@@ -28,6 +28,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -35,8 +40,9 @@ body {
   background: var(--cathedral-black);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
   position: relative;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 body::before {
@@ -290,6 +296,10 @@ h1 {
 
 section {
   padding: 4rem 0;
+}
+
+section:last-of-type {
+  padding-bottom: 2rem;
 }
 
 /* Slightly tighter bottom padding on the first about section */

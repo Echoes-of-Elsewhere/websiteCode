@@ -40,7 +40,7 @@ body {
   background: var(--cathedral-black);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow: visible !important;
   overscroll-behavior: none;
 }
 
@@ -296,7 +296,7 @@ section {
 }
 
 section:last-of-type {
-  padding-bottom: 2rem;
+  padding-bottom: 0;
 }
 
 /* Slightly tighter bottom padding on the first about section */
@@ -580,7 +580,7 @@ article.card.reveal[data-reveal] {
 }
 
 .foot {
-  padding: 2.5rem 0 3rem;
+  padding: 2.5rem 0 0;
   border-top: 1px solid rgba(46, 127, 143, 0.2);
   background: linear-gradient(180deg, rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95));
 }

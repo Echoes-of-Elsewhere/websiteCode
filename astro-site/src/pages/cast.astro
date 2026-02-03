@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CastCard from '../components/CastCard.astro';
+import { castMembers } from '../data/cast';
+---
+
+<BaseLayout title="Meet the Cast | Echoes of Elsewhere">
+  <Nav />
+
+  <main>
+    <section class="hero">
+      <div class="glow blue" aria-hidden="true"></div>
+      <div class="glow pink" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">The Table</div>
+          <h1>Meet the Cast</h1>
+          <p class="lede">
+            Seven voices. One Keeper. Different worlds. Each player steps through the portal with
+            a unique perspective and adapts as the rules change around them.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="/">Back to Home</a>
+            <a class="button secondary" href="mailto:hello@echoesofelsewhere.fake">Say hello</a>
+          </div>
+        </div>
+        <div class="portal-graphic" data-reveal aria-hidden="true">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <img class="portal-icon" src="/images/The Circle of Light Seal - Yellow Transparent.png" alt="Echoes of Elsewhere seal" />
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" id="cast">
+      <div class="section-heading" data-reveal>
+        <h2>The voices behind the echoes</h2>
+      </div>
+      <div class="cast-grid" style="margin-top: 1.6rem">
+        {castMembers.map((member) => (
+          <CastCard {...member} />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

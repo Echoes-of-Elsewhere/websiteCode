@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
-import { castMembers } from '../data/cast';
+import { castMembers, qaQuestions } from '../data/cast';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
         <h2>The voices behind the echoes</h2>
       </div>
       <ul class="cast-grid mt-1-6" aria-label="Cast members">
-        {castMembers.map((member) => (
+        {castMembers.map((member, memberIndex) => (
           <li>
             <article class="card cast-card" data-reveal>
               <div class="avatar" aria-hidden="true"></div>
@@ -38,13 +38,36 @@ const base = import.meta.env.BASE_URL;
                 <h3>{member.name}</h3>
                 <p class="role">{member.role}</p>
                 {member.bio && <p class="bio">{member.bio}</p>}
-                <ul class="qa-list">
-                  <li><strong>What got you interested in RPG?</strong></li>
-                  <li><strong>What was your first gaming experience like?</strong></li>
-                  <li><strong>Favorite character or game moment?</strong></li>
-                  <li><strong>What other cool thing do you do?</strong></li>
-                  <li><strong>Favorite movie, book, or character?</strong></li>
-                  <li><strong>GM, Player, or Both, and why?</strong></li>
+                <ul class="qa-list" role="list">
+                  {qaQuestions.map((q, qIndex) => {
+                    const answerId = `qa-${memberIndex}-${qIndex}`;
+                    const answer = member.qa?.[q.id];
+                    const hasAnswer = answer != null && answer.trim() !== '';
+                    return (
+                      <li class="qa-item">
+                        <button
+                          type="button"
+                          class="qa-question"
+                          aria-expanded="false"
+                          aria-controls={answerId}
+                          id={`${answerId}-btn`}
+                          data-qa-toggle
+                        >
+                          <span class="qa-question-text">{q.question}</span>
+                          <span class="qa-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div
+                          id={answerId}
+                          class="qa-answer"
+                          role="region"
+                          aria-labelledby={`${answerId}-btn`}
+                          hidden
+                        >
+                          {hasAnswer ? answer : 'Answer coming soon.'}
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <div class="connect">
                   <span class="label">Connect:</span>
@@ -60,4 +83,17 @@ const base = import.meta.env.BASE_URL;
   </main>
 
   <Footer />
+
+  <script>
+    document.querySelectorAll('[data-qa-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const targetId = btn.getAttribute('aria-controls');
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        btn.setAttribute('aria-expanded', String(!expanded));
+        target.hidden = expanded;
+      });
+    });
+  </script>
 </BaseLayout>

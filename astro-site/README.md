@@ -1,35 +1,18 @@
-# Echoes of Elsewhere - Astro Version
+# Echoes of Elsewhere — Astro site
 
-This is the Astro-based version of the Echoes of Elsewhere podcast website.
+The podcast website. This folder is the Astro project; the repo root has the GitHub Actions workflow that builds and deploys it to GitHub Pages.
 
-## What Changed?
-
-### Benefits of Astro
-- **No duplication**: Nav and Footer are components, used once
-- **Easy content management**: Cast members stored in `src/data/cast.ts`
-- **Component reusability**: CastCard component used for all 7 cast members
-- **Same look**: Identical styling to the original HTML version
-- **Ready for videos**: Easy to add VideoCard components in the future
-
-### Project Structure
+### Project structure
 
 ```
 astro-site/
-├── public/               # Static assets (images, scripts)
-│   ├── images/
-│   └── scripts.js
+├── public/               # Static assets (images)
+│   └── images/
 ├── src/
-│   ├── components/       # Reusable components
-│   │   ├── Nav.astro
-│   │   ├── Footer.astro
-│   │   └── CastCard.astro
-│   ├── data/            # Content data files
-│   │   └── cast.ts
-│   ├── layouts/         # Page layouts
-│   │   └── BaseLayout.astro
-│   ├── pages/           # Routes (become URLs)
-│   │   ├── index.astro  → /
-│   │   └── cast.astro   → /cast
+│   ├── components/       # Nav, Footer, HeroSection, PortalGraphic, CastCard
+│   ├── data/             # cast.ts
+│   ├── layouts/          # BaseLayout.astro
+│   ├── pages/            # index, cast, contact
 │   └── styles/
 │       └── global.css
 ```
@@ -67,8 +50,4 @@ Create `src/components/VideoCard.astro` and use it anywhere!
 
 ## Deployment
 
-This builds to static HTML/CSS/JS - deploy anywhere:
-- Netlify
-- Vercel  
-- GitHub Pages
-- Any static host
+The repo root has `.github/workflows/deploy.yml`, which builds this Astro site (`path: astro-site`) and deploys to GitHub Pages on push to `main`. Set **Settings → Pages → Source** to **GitHub Actions** and configure `site` (and `base` for project pages) in `astro.config.mjs`. See the root README for one-time setup.

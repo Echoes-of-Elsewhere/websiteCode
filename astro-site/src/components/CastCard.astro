@@ -1,0 +1,33 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  bio?: string;
+  website?: string;
+  social?: string;
+}
+
+const { name, role, bio, website, social } = Astro.props;
+---
+
+<article class="card cast-card" data-reveal>
+  <div class="avatar" aria-hidden="true"></div>
+  <div class="cast-body">
+    <h3>{name}</h3>
+    <p class="role">{role}</p>
+    {bio && <p class="bio">{bio}</p>}
+    <ul class="qa-list">
+      <li><strong>What got you interested in RPG?</strong></li>
+      <li><strong>What was your first gaming experience like?</strong></li>
+      <li><strong>Favorite character or game moment?</strong></li>
+      <li><strong>What other cool thing do you do?</strong></li>
+      <li><strong>Favorite movie, book, or character?</strong></li>
+      <li><strong>GM, Player, or Both, and why?</strong></li>
+    </ul>
+    <div class="connect">
+      <span class="label">Connect:</span>
+      {website && <a href={website}>Website</a>}
+      {social && <a href={social}>Social</a>}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<BaseLayout title="Contact | Echoes of Elsewhere" bodyClass="page-contact">
+  <Nav />
+
+  <main>
+    <HeroSection>
+      <div class="eyebrow">Get in Touch</div>
+      <h1>Say Hello</h1>
+      <p class="lede">
+        Connect with us on social media or send us a message. We'd love to hear from you!
+      </p>
+    </HeroSection>
+
+    <section class="shell" id="social">
+      <div class="section-heading" data-reveal>
+        <h2>Follow Us</h2>
+        <p>
+          Stay up to date with the latest episodes, announcements, and behind-the-scenes content.
+        </p>
+      </div>
+      <div class="grid cols-3 mt-1-4">
+        <article class="card" data-reveal>
+          <h3>Twitter / X</h3>
+          <p>Follow us for updates, episode drops, and community discussions.</p>
+          <div class="hero-actions mt-1">
+            <a class="button secondary" href="https://twitter.com/echoesofelsewhere" target="_blank" rel="noopener">@echoesofelsewhere</a>
+          </div>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Instagram</h3>
+          <p>Behind-the-scenes photos, character art, and visual storytelling.</p>
+          <div class="hero-actions mt-1">
+            <a class="button secondary" href="https://instagram.com/echoesofelsewhere" target="_blank" rel="noopener">@echoesofelsewhere</a>
+          </div>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Discord</h3>
+          <p>Join our community to discuss episodes and connect with other listeners.</p>
+          <div class="hero-actions mt-1">
+            <a class="button secondary" href="https://discord.gg/echoesofelsewhere" target="_blank" rel="noopener">Join Server</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="portal-divider shell" aria-hidden="true"></div>
+
+    <section class="shell" id="contact-form">
+      <div class="section-heading" data-reveal>
+        <h2>Send Us a Message</h2>
+        <p>
+          Have a question, feedback, or just want to say hi? Fill out the form below.
+        </p>
+      </div>
+      <div class="two-col mt-1-4">
+        <article class="card" data-reveal>
+          <h3>Contact Form</h3>
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="button">Send Message</button>
+          </form>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Other Ways to Reach Us</h3>
+          <p>
+            Prefer email? You can reach us directly at:
+          </p>
+          <div class="callout">
+            <strong>hello@echoesofelsewhere.com</strong>
+          </div>
+          <p class="mt-1-5">
+            We typically respond within 2-3 business days. For urgent matters or press inquiries,
+            please mention that in your subject line.
+          </p>
+          <div class="hero-actions mt-1-5">
+            <a class="button secondary" href="/">Back to Home</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

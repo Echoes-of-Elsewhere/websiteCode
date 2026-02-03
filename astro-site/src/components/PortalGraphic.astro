@@ -1,0 +1,44 @@
+---
+interface Props {
+  fetchPriority?: 'high' | 'low' | 'auto';
+}
+
+const { fetchPriority = 'auto' } = Astro.props;
+---
+
+<div class="portal-graphic" data-reveal aria-hidden="true" data-portal-tilt>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+  <img
+    class="portal-icon"
+    src="/images/The Circle of Light Seal - Yellow Transparent.png"
+    alt="Echoes of Elsewhere seal"
+    width="312"
+    height="312"
+    fetchpriority={fetchPriority}
+  />
+</div>
+
+<script>
+  (function () {
+    const wrapper = document.querySelector('[data-portal-tilt]');
+    if (!wrapper) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    wrapper.addEventListener('pointermove', (event) => {
+      const rect = wrapper.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      wrapper.style.setProperty('--tilt-x', `${(0.5 - y) * 4}deg`);
+      wrapper.style.setProperty('--tilt-y', `${(x - 0.5) * 4}deg`);
+      wrapper.style.transform = `rotateX(${(0.5 - y) * 8}deg) rotateY(${(x - 0.5) * 8}deg)`;
+    });
+
+    wrapper.addEventListener('pointerleave', () => {
+      wrapper.style.transform = '';
+    });
+  })();
+</script>

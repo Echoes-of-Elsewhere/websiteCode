@@ -43,7 +43,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("images/EOE Tunnel.gif") center/cover no-repeat;
+  background: url("/images/EOE Tunnel.gif") center/cover no-repeat;
   opacity: 0.28;
   filter: none;
   z-index: 0;

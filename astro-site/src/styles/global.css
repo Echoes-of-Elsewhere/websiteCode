@@ -82,6 +82,25 @@ img {
   display: block;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--arcane-gold);
+  color: var(--cathedral-black);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--threshold-teal);
+  outline-offset: 2px;
+}
+
 .page {
   position: relative;
   isolation: isolate;

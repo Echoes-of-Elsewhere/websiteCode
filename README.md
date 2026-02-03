@@ -61,4 +61,4 @@ npm run build    # output in astro-site/dist
 npm run preview  # serve dist locally
 ```
 
-See **astro-site/README.md** for project structure and adding content (e.g. cast members).
+See **astro-site/README.md** for project structure and adding content (e.g. cast members). For **accessibility (ADA) checks**, see **astro-site/ACCESSIBILITY.md**.

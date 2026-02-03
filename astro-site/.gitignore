@@ -1,5 +1,6 @@
 # build output
 dist/
+a11y-report*.html
 # generated types
 .astro/
 

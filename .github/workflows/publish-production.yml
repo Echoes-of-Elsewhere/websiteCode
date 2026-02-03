@@ -1,0 +1,40 @@
+# Production: run manually when staging (github.io/websiteCode) looks good. Builds with your custom domain and deploys to the production repo.
+name: Publish to production
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: astro-site/package-lock.json
+
+      - name: Install and build for production
+        run: cd astro-site && npm ci && npm run build
+        env:
+          # Set in repo Settings → Secrets and variables → Actions (Variables): PRODUCTION_SITE = https://yourdomain.com
+          ASTRO_SITE: ${{ vars.PRODUCTION_SITE }}
+          # No base path so links work at the custom domain root
+          ASTRO_BASE: ""
+
+      - name: Deploy to production repo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Set in repo Settings → Secrets and variables → Actions (Secrets): PRODUCTION_GITHUB_TOKEN = PAT with repo scope + write to the production repo
+          github_token: ${{ secrets.PRODUCTION_GITHUB_TOKEN }}
+          # Repo that has GitHub Pages + your custom domain (e.g. your-org/yourdomain.com or username/username.github.io)
+          external_repository: echoes-of-elsewhere/echoesofelsewhere-production
+          publish_dir: astro-site/dist
+          allow_empty_commit: true

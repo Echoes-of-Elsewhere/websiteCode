@@ -45,10 +45,7 @@ const base = import.meta.env.BASE_URL;
       window.addEventListener('load', addLoaded);
     </script>
   </head>
-  <body class={bodyClass}>
-    <style is:global>
-      body.loaded::before { background-image: url("{base}images/EOE Tunnel.gif"); }
-    </style>
+  <body class={bodyClass} style={`--bg-gif: url('${base}images/EOE%20Tunnel.gif')`}>
     <div class="page">
       <div class="noise" aria-hidden="true"></div>
       <slot />

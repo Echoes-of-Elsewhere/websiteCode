@@ -67,7 +67,7 @@ body::before {
   transition: background-image 0.2s ease-out;
 }
 body.loaded::before {
-  background-image: url("/images/EOE Tunnel.gif");
+  background-image: var(--bg-gif, url("/images/EOE Tunnel.gif"));
   background-position: center;
   background-repeat: no-repeat;
 }

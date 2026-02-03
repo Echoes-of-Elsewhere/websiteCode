@@ -28,29 +28,25 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-  overscroll-behavior: none;
-}
-
 body {
   margin: 0;
-  padding: 0;
   font-family: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--cathedral-black);
   color: var(--text);
   line-height: 1.6;
+  min-height: 100vh;
   overflow-x: hidden;
-  overscroll-behavior: none;
+  position: relative;
 }
 
-body::after {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: url("/images/EOE Tunnel.gif") center/cover no-repeat;
   opacity: 0.28;
-  z-index: 1;
+  filter: none;
+  z-index: 0;
   pointer-events: none;
 }
 

@@ -2,42 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
 ---
 
 <BaseLayout title="Echoes of Elsewhere | Actual Play Podcast">
   <Nav />
 
   <main>
-    <section class="hero">
-      <div class="glow blue" aria-hidden="true"></div>
-      <div class="glow pink" aria-hidden="true"></div>
-      <div class="shell hero-grid">
-        <div data-reveal>
-          <div class="eyebrow">Actual Play Podcast</div>
-          <h1>Echoes of Elsewhere</h1>
-          <p class="lede"><strong>One Story. Many Systems.</strong></p>
-          <p class="lede">
-            Modern-day heroes collide with extraordinary realms. The story leads, and the rules
-            shift when the world demands it.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="/cast">Meet the Cast</a>
-            <a class="button secondary" href="#season">Season 1 - Coming Soon</a>
-          </div>
-          <div class="chips" style="margin-top: 1rem">
-            <span class="chip">Pulp Cthulhu (Chaosium)</span>
-            <span class="chip">More systems unlock soon</span>
-            <span class="chip">Story-first multiverse</span>
-          </div>
-        </div>
-        <div class="portal-graphic" data-reveal aria-hidden="true">
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <img class="portal-icon" src="/images/The Circle of Light Seal - Yellow Transparent.png" alt="Echoes of Elsewhere seal" />
-        </div>
+    <HeroSection>
+      <div class="eyebrow">Actual Play Podcast</div>
+      <h1>Echoes of Elsewhere</h1>
+      <p class="lede"><strong>One Story. Many Systems.</strong></p>
+      <p class="lede">
+        Modern-day heroes collide with extraordinary realms. The story leads, and the rules
+        shift when the world demands it.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="/cast">Meet the Cast</a>
+        <a class="button secondary" href="#season">Season 1 - Coming Soon</a>
       </div>
-    </section>
+      <div class="chips mt-1">
+        <span class="chip">Pulp Cthulhu (Chaosium)</span>
+        <span class="chip">More systems unlock soon</span>
+        <span class="chip">Story-first multiverse</span>
+      </div>
+    </HeroSection>
 
     <section class="shell" id="about">
       <div class="section-heading" data-reveal>
@@ -47,7 +36,7 @@ import Footer from '../components/Footer.astro';
           through shifting realities where rules change with every portal jump.
         </p>
       </div>
-      <div class="grid cols-3" style="margin-top: 1.4rem">
+      <div class="grid cols-3 mt-1-4">
         <article class="card" data-reveal>
           <div class="pill">World 1</div>
           <h3>Modern Mystery</h3>
@@ -85,7 +74,7 @@ import Footer from '../components/Footer.astro';
           card and fill it in.
         </p>
       </div>
-      <div class="grid cols-2" style="margin-top: 1.4rem">
+      <div class="grid cols-2 mt-1-4">
         <article class="card" data-reveal>
           <div class="pill">Chaosium</div>
           <h3>Pulp Cthulhu</h3>
@@ -112,7 +101,7 @@ import Footer from '../components/Footer.astro';
           for the premiere date and episode feed.
         </p>
       </div>
-      <div class="two-col" style="margin-top: 1.4rem">
+      <div class="two-col mt-1-4">
         <article class="card" data-reveal>
           <h3>Launch Preview</h3>
           <p>

@@ -1,0 +1,21 @@
+---
+import PortalGraphic from './PortalGraphic.astro';
+
+interface Props {
+  /** Use 'high' on the cast page to prioritize the seal image */
+  portalFetchPriority?: 'high' | 'low' | 'auto';
+}
+
+const { portalFetchPriority = 'auto' } = Astro.props;
+---
+
+<section class="hero">
+  <div class="glow blue" aria-hidden="true"></div>
+  <div class="glow pink" aria-hidden="true"></div>
+  <div class="shell hero-grid">
+    <div data-reveal>
+      <slot />
+    </div>
+    <PortalGraphic fetchPriority={portalFetchPriority} />
+  </div>
+</section>

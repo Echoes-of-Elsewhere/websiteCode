@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import CastCard from '../components/CastCard.astro';
+import HeroSection from '../components/HeroSection.astro';
 import { castMembers } from '../data/cast';
 ---
 
@@ -10,40 +10,50 @@ import { castMembers } from '../data/cast';
   <Nav />
 
   <main>
-    <section class="hero">
-      <div class="glow blue" aria-hidden="true"></div>
-      <div class="glow pink" aria-hidden="true"></div>
-      <div class="shell hero-grid">
-        <div data-reveal>
-          <div class="eyebrow">The Table</div>
-          <h1>Meet the Cast</h1>
-          <p class="lede">
-            Seven voices. One Keeper. Different worlds. Each player steps through the portal with
-            a unique perspective and adapts as the rules change around them.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="/">Back to Home</a>
-            <a class="button secondary" href="/contact">Say hello</a>
-          </div>
-        </div>
-        <div class="portal-graphic" data-reveal aria-hidden="true">
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <div class="ring"></div>
-          <img class="portal-icon" src="/images/The Circle of Light Seal - Yellow Transparent.png" alt="Echoes of Elsewhere seal" />
-        </div>
+    <HeroSection portalFetchPriority="high">
+      <div class="eyebrow">The Table</div>
+      <h1>Meet the Cast</h1>
+      <p class="lede">
+        Seven voices. One Keeper. Different worlds. Each player steps through the portal with
+        a unique perspective and adapts as the rules change around them.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="/">Back to Home</a>
+        <a class="button secondary" href="/contact">Say hello</a>
       </div>
-    </section>
+    </HeroSection>
 
     <section class="shell" id="cast">
       <div class="section-heading" data-reveal>
         <h2>The voices behind the echoes</h2>
       </div>
-      <div class="cast-grid" style="margin-top: 1.6rem">
+      <ul class="cast-grid mt-1-6" aria-label="Cast members">
         {castMembers.map((member) => (
-          <CastCard {...member} />
+          <li>
+            <article class="card cast-card" data-reveal>
+              <div class="avatar" aria-hidden="true"></div>
+              <div class="cast-body">
+                <h3>{member.name}</h3>
+                <p class="role">{member.role}</p>
+                {member.bio && <p class="bio">{member.bio}</p>}
+                <ul class="qa-list">
+                  <li><strong>What got you interested in RPG?</strong></li>
+                  <li><strong>What was your first gaming experience like?</strong></li>
+                  <li><strong>Favorite character or game moment?</strong></li>
+                  <li><strong>What other cool thing do you do?</strong></li>
+                  <li><strong>Favorite movie, book, or character?</strong></li>
+                  <li><strong>GM, Player, or Both, and why?</strong></li>
+                </ul>
+                <div class="connect">
+                  <span class="label">Connect:</span>
+                  {member.website && <a href={member.website}>Website</a>}
+                  {member.social && <a href={member.social}>Social</a>}
+                </div>
+              </div>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   </main>
 

@@ -28,26 +28,48 @@
   box-sizing: border-box;
 }
 
+/* Reserve scrollbar space from first paint so it never appears mid-load and resizes layout */
+html {
+  scrollbar-gutter: stable;
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--cathedral-black);
   color: var(--text);
   line-height: 1.6;
-  min-height: 100vh;
+  min-height: 100%;
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
   position: relative;
 }
 
+/* Background GIF: fixed viewport-sized layer; only applied after load to avoid decode reflow during load */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
-  background: url("/images/EOE Tunnel.gif") center/cover no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  background-color: var(--cathedral-black);
+  background-size: cover;
   opacity: 0.28;
-  filter: none;
   z-index: 0;
   pointer-events: none;
+  contain: strict;
+  transform: translateZ(0);
+  transition: background-image 0.2s ease-out;
+}
+body.loaded::before {
+  background-image: url("/images/EOE Tunnel.gif");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -300,6 +322,37 @@ section:last-of-type {
   padding-bottom: 0.5rem;
 }
 
+/* Cast page: no extra space, stable layout */
+#cast {
+  padding-bottom: 0;
+  contain: layout;
+}
+
+#cast .cast-grid {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  min-height: 1px;
+}
+
+#cast .cast-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact page: same layout containment as cast for stable height */
+#social,
+#contact-form {
+  contain: layout;
+}
+
+#contact-form {
+  padding-bottom: 0;
+}
+
+/* Stabilize layout so height is correct before images/fonts finish loading */
+main {
+  contain: layout;
+}
+
 #systems {
   padding-top: 1.5rem;
 }
@@ -316,12 +369,6 @@ section .list {
 
 .reveal,
 [data-reveal] {
-  opacity: 0;
-  transform: none;
-  transition: opacity 800ms ease-out;
-}
-
-.reveal {
   opacity: 1;
   transform: none;
 }
@@ -430,6 +477,15 @@ article.card.reveal[data-reveal] {
   flex-direction: column;
   gap: 1.2rem;
   width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cast-grid > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .cast-card {
@@ -608,6 +664,7 @@ article.card.reveal[data-reveal] {
   position: relative;
   height: 20px;
   margin: .2rem 0 0;
+  overflow: clip; /* prevents blurred pseudo-elements from causing horizontal overflow */
 }
 
 .portal-divider::before,
@@ -675,5 +732,63 @@ h2, h3 {
   font-family: "Cinzel", Georgia, serif;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+/* Utility classes - use instead of inline styles */
+.mt-1 { margin-top: 1rem; }
+.mt-1-4 { margin-top: 1.4rem; }
+.mt-1-5 { margin-top: 1.5rem; }
+.mt-1-6 { margin-top: 1.6rem; }
+.mt-0-8 { margin-top: 0.8rem; }
+.block { display: block; }
+
+/* Contact form - design system (used on contact page) */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  background: rgba(26, 42, 64, 0.3);
+  border: 1px solid rgba(46, 127, 143, 0.3);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(201, 168, 106, 0.5);
+  background: rgba(26, 42, 64, 0.5);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+  overscroll-behavior-y: contain;
+}
+
+/* Contact page: form scroll doesn't chain to page */
+body.page-contact .contact-form {
+  overscroll-behavior-y: contain;
 }
 

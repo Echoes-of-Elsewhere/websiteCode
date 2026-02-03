@@ -30,6 +30,7 @@
 
 body {
   margin: 0;
+  padding: 0;
   font-family: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--cathedral-black);
   color: var(--text);
@@ -576,6 +577,7 @@ article.card.reveal[data-reveal] {
 }
 
 .foot {
+  margin-top: auto;
   padding: 2.5rem 0 3rem;
   border-top: 1px solid rgba(46, 127, 143, 0.2);
   background: linear-gradient(180deg, rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.95));

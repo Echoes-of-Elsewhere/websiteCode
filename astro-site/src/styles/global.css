@@ -49,11 +49,14 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   background: url("/images/EOE Tunnel.gif") center/cover no-repeat;
   opacity: 0.28;
   filter: none;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 a {
@@ -68,7 +71,6 @@ img {
 
 .page {
   position: relative;
-  isolation: isolate;
   z-index: 2;
 }
 

@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { title, bodyClass } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@ const { title, bodyClass } = Astro.props;
       rel="stylesheet"
     />
     <!-- Seal preloaded for above-the-fold logo; GIF not preloaded so 2MB doesn't compete with fonts/layout during initial load -->
-    <link rel="preload" href="/images/The Circle of Light Seal - Yellow Transparent.png" as="image" />
+    <link rel="preload" href={`${base}images/The Circle of Light Seal - Yellow Transparent.png`} as="image" />
     <script is:inline>
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       function addLoaded() {
@@ -45,6 +46,9 @@ const { title, bodyClass } = Astro.props;
     </script>
   </head>
   <body class={bodyClass}>
+    <style is:global>
+      body.loaded::before { background-image: url("{base}images/EOE Tunnel.gif"); }
+    </style>
     <div class="page">
       <div class="noise" aria-hidden="true"></div>
       <slot />

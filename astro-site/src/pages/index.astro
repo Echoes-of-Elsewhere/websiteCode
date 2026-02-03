@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Echoes of Elsewhere | Actual Play Podcast">
@@ -18,8 +20,8 @@ import HeroSection from '../components/HeroSection.astro';
         shift when the world demands it.
       </p>
       <div class="hero-actions">
-        <a class="button" href="/cast">Meet the Cast</a>
-        <a class="button secondary" href="#season">Season 1 - Coming Soon</a>
+        <a class="button" href={`${base}cast`}>Meet the Cast</a>
+        <a class="button secondary" href={`${base}#season`}>Season 1 - Coming Soon</a>
       </div>
       <div class="chips mt-1">
         <span class="chip">Pulp Cthulhu (Chaosium)</span>
@@ -109,8 +111,8 @@ import HeroSection from '../components/HeroSection.astro';
             allies pulled into something vast. Every leap shifts tone, music, and mechanics.
           </p>
           <div class="hero-actions">
-            <a class="button" href="/cast">Meet the Cast</a>
-            <a class="button secondary" href="/contact">Get launch alerts</a>
+            <a class="button" href={`${base}cast`}>Meet the Cast</a>
+            <a class="button secondary" href={`${base}contact`}>Get launch alerts</a>
           </div>
         </article>
         <article class="card" data-reveal>

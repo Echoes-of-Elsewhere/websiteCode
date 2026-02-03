@@ -4,6 +4,8 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
 import { castMembers } from '../data/cast';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Meet the Cast | Echoes of Elsewhere">
@@ -18,8 +20,8 @@ import { castMembers } from '../data/cast';
         a unique perspective and adapts as the rules change around them.
       </p>
       <div class="hero-actions">
-        <a class="button" href="/">Back to Home</a>
-        <a class="button secondary" href="/contact">Say hello</a>
+        <a class="button" href={base}>Back to Home</a>
+        <a class="button secondary" href={`${base}contact`}>Say hello</a>
       </div>
     </HeroSection>
 

@@ -1,13 +1,16 @@
+---
+const base = import.meta.env.BASE_URL;
+---
 <header>
   <nav class="nav">
-    <a class="logo" href="/">
-      <img class="logo-mark" src="/images/The Circle of Light Seal - Yellow Transparent.png" alt="Echoes of Elsewhere seal" width="30" height="30" />
+    <a class="logo" href={base}>
+      <img class="logo-mark" src={`${base}images/The Circle of Light Seal - Yellow Transparent.png`} alt="Echoes of Elsewhere seal" width="30" height="30" />
       Echoes of Elsewhere
     </a>
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/cast">Meet the Cast</a>
-      <a href="/contact">Contact</a>
+      <a href={base}>Home</a>
+      <a href={`${base}cast`}>Meet the Cast</a>
+      <a href={`${base}contact`}>Contact</a>
     </div>
   </nav>
 </header>

@@ -58,6 +58,10 @@ npm run check:a11y:all
 - `a11y-report-cast.html` — Meet the Cast
 - `a11y-report-contact.html` — Contact
 
+The Keshanar pages are static resource pages with full-size character-sheet images. Include the
+hub and at least one character page in a manual pass when reviewing image loading, focus order,
+and the download links.
+
 Open each in a browser to see the report. To test a live URL instead, run Lighthouse with that URL and `--only-categories=accessibility --output=html --output-path=./a11y-report.html`.
 
 ## Quick checklist (manual)

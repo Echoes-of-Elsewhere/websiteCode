@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "verify": "npm run build && node scripts/verify-build.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "check:a11y": "npx --yes lighthouse http://localhost:4322/websiteCode/   --only-categories=accessibility --output=html --output-path=./a11y-report.html --chrome-flags=--headless=new --quiet",
-    "check:a11y:all": "npm run check:a11y && npx --yes lighthouse http://localhost:4322/websiteCode/cast --only-categories=accessibility --output=html --output-path=./a11y-report-cast.html --chrome-flags=--headless=new --quiet && npx --yes lighthouse http://localhost:4322/websiteCode/contact --only-categories=accessibility --output=html --output-path=./a11y-report-contact.html --chrome-flags=--headless=new --quiet"
+    "check:a11y": "npx --yes lighthouse http://localhost:4321/websiteCode/ --only-categories=accessibility --output=html --output-path=./a11y-report.html --chrome-flags=--headless=new --quiet",
+    "check:a11y:all": "npm run check:a11y && npx --yes lighthouse http://localhost:4321/websiteCode/cast --only-categories=accessibility --output=html --output-path=./a11y-report-cast.html --chrome-flags=--headless=new --quiet && npx --yes lighthouse http://localhost:4321/websiteCode/contact --only-categories=accessibility --output=html --output-path=./a11y-report-contact.html --chrome-flags=--headless=new --quiet"
   },
   "dependencies": {
     "astro": "^5.17.1"

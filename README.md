@@ -53,6 +53,10 @@ You need a **second repo** that will hold the built site and have your custom do
 3. Go to **Actions** → **Publish to production** → **Run workflow** → **Run workflow**.
 4. When it finishes, your custom domain will show the new build. Staging (github.io/websiteCode) is unchanged.
 
+The production workflow uses `PRODUCTION_GITHUB_TOKEN` as a personal access token because it pushes
+to a separate repository. It also writes the hostname from `PRODUCTION_SITE` into the published
+`CNAME` file so the branch-based custom domain remains attached after each publish.
+
 ## Build / preview
 
 ```bash

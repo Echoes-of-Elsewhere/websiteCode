@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { keshanarCharacters, keshanarScenes, roll20Link } from '../../data/keshanar';
+
+export function getStaticPaths() {
+  return [
+    ...keshanarCharacters.map((character) => ({ params: { slug: character.slug }, props: { character } })),
+    ...keshanarScenes.map((scene) => ({ params: { slug: scene.slug }, props: { scene } })),
+  ];
+}
+
+const { character, scene } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const title = character ? `${character.name} | Keshanar | Echoes of Elsewhere` : `${scene.name} | Keshanar | Echoes of Elsewhere`;
+---
+
+<BaseLayout title={title} description={character ? `${character.name}, ${character.classLine}, a pre-generated Keshanar character for Echoes of Elsewhere.` : `${scene.name}, a Keshanar encounter map reference for Echoes of Elsewhere.`}>
+  <Nav />
+
+  <main id="main-content">
+    {character ? (
+      <>
+        <section class="shell resource-detail resource-section">
+          <a class="back-link" href={`${base}keshanar`}>← Back to Keshanar resources</a>
+          <div class="eyebrow">Pre-generated 3rd-level character</div>
+          <h1>{character.name}</h1>
+          <p class="lede">{character.classLine}</p>
+          <div class="resource-detail-actions">
+            <a class="button" href={`${base.replace(/\/$/, '')}${character.pdf}`} download>Download character sheet PDF</a>
+            <a class="button secondary" href={roll20Link} target="_blank" rel="noopener">Join on Roll20</a>
+          </div>
+          <div class="resource-notes mt-1-4">
+            <article class="card">
+              <h2>Connection to the Sa-Meru family</h2>
+              <p>{character.familyConnection}</p>
+            </article>
+            <article class="card">
+              <h2>Story hook</h2>
+              <p>{character.supernaturalHook}</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="shell resource-section">
+          <div class="section-heading" data-reveal>
+            <h2>Character sheet reference</h2>
+          </div>
+          <div class="sheet-gallery mt-1-4">
+            {character.sheetPages.map((page, index) => (
+              <a class="sheet-page" href={`${base.replace(/\/$/, '')}${page}`} target="_blank" rel="noopener">
+                <img src={`${base.replace(/\/$/, '')}${page}`} alt={`${character.name} character sheet page ${index + 1}`} loading="lazy" width="850" height="1100" />
+                <span>Page {index + 1}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      </>
+    ) : (
+      <section class="shell resource-detail resource-section">
+        <a class="back-link" href={`${base}keshanar`}>← Back to Keshanar resources</a>
+        <div class="eyebrow">Scene reference</div>
+        <h1>{scene.name}</h1>
+        <p class="lede">The current site hosts the full-size gridded encounter map for this location.</p>
+        <div class="hero-actions">
+          <a class="button" href={scene.liveUrl} target="_blank" rel="noopener">Open full-size map</a>
+          <a class="button secondary" href={`${base}keshanar`}>Back to Keshanar</a>
+        </div>
+        <article class="card resource-map-note mt-1-4">
+          <h2>Map source</h2>
+          <p>
+            The map has not been duplicated into this repository, so this link preserves the
+            original resource while avoiding a low-resolution or unverified copy.
+          </p>
+        </article>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

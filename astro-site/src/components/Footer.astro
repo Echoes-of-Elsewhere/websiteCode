@@ -1,4 +1,5 @@
 ---
+import { siteLinks } from '../data/site';
 const base = import.meta.env.BASE_URL;
 ---
 <div class="portal-divider shell" aria-hidden="true"></div>
@@ -11,17 +12,26 @@ const base = import.meta.env.BASE_URL;
         Echoes of Elsewhere
       </a>
       <p class="lede mt-0-8">
-        Actual play stories that bridge worlds and rulesets. Stay close. The first season is
-        nearly here.
+        Actual play stories that bridge worlds and rulesets. Start with Episode 1, then follow the
+        cast through the next portal.
       </p>
     </div>
     <div>
       <div class="chips">
         <a class="chip" href={`${base}cast`}>Cast</a>
-        <a class="chip" href={`${base}#season`}>Season 1</a>
+        <a class="chip" href={`${base}#listen`}>Watch / Listen</a>
+        <a class="chip" href={`${base}keshanar`}>Keshanar</a>
         <a class="chip" href={`${base}contact`}>Contact</a>
       </div>
-      <small class="block mt-1">Portals open soon.</small>
+      <div class="footer-socials mt-1" aria-label="Community links">
+        <a href={siteLinks.youtube} target="_blank" rel="noopener">YouTube</a>
+        <a href={siteLinks.patreon} target="_blank" rel="noopener">Patreon</a>
+        <a href={siteLinks.x} target="_blank" rel="noopener">X</a>
+        <a href={siteLinks.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={siteLinks.tiktok} target="_blank" rel="noopener">TikTok</a>
+        <a href={siteLinks.bluesky} target="_blank" rel="noopener">Bluesky</a>
+      </div>
+      <small class="block mt-1">New episodes and community updates live on the links above.</small>
     </div>
   </div>
 </footer>

@@ -29,11 +29,27 @@ jobs:
           # No base path so links work at the custom domain root
           ASTRO_BASE: ""
 
+      - name: Preserve the production custom domain
+        shell: bash
+        env:
+          PRODUCTION_SITE: ${{ vars.PRODUCTION_SITE }}
+        run: |
+          set -euo pipefail
+          site="${PRODUCTION_SITE%/}"
+          domain="${site#https://}"
+          domain="${domain#http://}"
+          domain="${domain%%/*}"
+          if [[ -z "$domain" || "$domain" == "$site" && "$site" != *://* ]]; then
+            echo "PRODUCTION_SITE must be a full URL such as https://www.eoeap.com" >&2
+            exit 1
+          fi
+          printf '%s\n' "$domain" > astro-site/dist/CNAME
+
       - name: Deploy to production repo
         uses: peaceiris/actions-gh-pages@v3
         with:
           # Set in repo Settings → Secrets and variables → Actions (Secrets): PRODUCTION_GITHUB_TOKEN = PAT with repo scope + write to the production repo
-          github_token: ${{ secrets.PRODUCTION_GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PRODUCTION_GITHUB_TOKEN }}
           # Repo that has GitHub Pages + your custom domain (e.g. your-org/yourdomain.com or username/username.github.io)
           external_repository: echoes-of-elsewhere/echoesofelsewhere-production
           publish_dir: astro-site/dist

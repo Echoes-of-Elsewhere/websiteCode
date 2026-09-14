@@ -4,12 +4,14 @@ import PortalGraphic from './PortalGraphic.astro';
 interface Props {
   /** Use 'high' on the cast page to prioritize the seal image */
   portalFetchPriority?: 'high' | 'low' | 'auto';
+  /** Secondary pages use a shorter hero so the useful content starts sooner. */
+  compact?: boolean;
 }
 
-const { portalFetchPriority = 'auto' } = Astro.props;
+const { portalFetchPriority = 'auto', compact = false } = Astro.props;
 ---
 
-<section class="hero">
+<section class:list={['hero', { 'hero-compact': compact }]}>
   <div class="glow blue" aria-hidden="true"></div>
   <div class="glow pink" aria-hidden="true"></div>
   <div class="shell hero-grid">

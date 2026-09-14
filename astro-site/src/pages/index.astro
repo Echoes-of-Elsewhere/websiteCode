@@ -3,11 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import HeroSection from '../components/HeroSection.astro';
+import { episodeOne, siteLinks } from '../data/site';
 
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Echoes of Elsewhere | Actual Play Podcast">
+<BaseLayout
+  title="Echoes of Elsewhere | Actual Play Podcast"
+  description="Echoes of Elsewhere is an actual play podcast crossing the boundaries between worlds, rules, and realities."
+>
   <Nav />
 
   <main id="main-content">
@@ -16,51 +20,76 @@ const base = import.meta.env.BASE_URL;
       <h1>Echoes of Elsewhere</h1>
       <p class="lede"><strong>One Story. Many Systems.</strong></p>
       <p class="lede">
-        Modern-day heroes collide with extraordinary realms. The story leads, and the rules
-        shift when the world demands it.
+        Modern-day heroes collide with extraordinary realms. The story leads, and the rules shift
+        when the world demands it.
       </p>
       <div class="hero-actions">
-        <a class="button" href={`${base}cast`}>Meet the Cast</a>
-        <a class="button secondary" href={`${base}#season`}>Season 1 - Coming Soon</a>
+        <a class="button" href="#episode-1">Start with Episode 1</a>
+        <a class="button secondary" href={`${base}cast`}>Meet the Cast</a>
       </div>
       <div class="chips mt-1">
         <span class="chip">Pulp Cthulhu (Chaosium)</span>
-        <span class="chip">More systems unlock soon</span>
+        <span class="chip">Dungeons &amp; Dragons 5e</span>
         <span class="chip">Story-first multiverse</span>
       </div>
     </HeroSection>
 
+    <section class="shell episode-section" id="episode-1">
+      <div class="section-heading" data-reveal>
+        <h2>{episodeOne.title}</h2>
+      </div>
+      <div class="episode-layout mt-1-4">
+        <div class="episode-player">
+          <iframe
+            src={`https://www.youtube.com/embed/${episodeOne.videoId}?rel=0`}
+            title={episodeOne.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <article class="card episode-card" data-reveal>
+          <div class="pill">Start here</div>
+          <h3>The Circle Gathers</h3>
+          <p>
+            The nightmare at Happy Trails was only the beginning. Something followed the
+            investigators to New Eden, where a dark presence waits in Rosewood Manor.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href={siteLinks.episodeOne} target="_blank" rel="noopener">Watch Episode 1</a>
+            <a class="button secondary" href={siteLinks.playlist} target="_blank" rel="noopener">Open full playlist</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="shell" id="about">
       <div class="section-heading" data-reveal>
         <h2>What is Echoes of Elsewhere?</h2>
-        <p>
-          Cinematic stakes, character-driven storytelling, and collaborative world-building told
-          through shifting realities where rules change with every portal jump.
-        </p>
       </div>
       <div class="grid cols-3 mt-1-4">
         <article class="card" data-reveal>
           <div class="pill">World 1</div>
           <h3>Modern Mystery</h3>
           <p>
-            Start on Earth with the Pulp Cthulhu rules. Think noir energy, creeping dread, and
-            heroes who aren't ready for the weirdness ahead.
+            Start on Earth with the Pulp Cthulhu rules. Noir energy, creeping dread, and heroes
+            who are not ready for the weirdness ahead.
           </p>
         </article>
         <article class="card" data-reveal>
           <div class="pill">World 2</div>
           <h3>Portal Fantasy</h3>
           <p>
-            Cross the threshold into a mythic realm. The rulebook will change when we announce
-            the next system. This slot is ready for it.
+            Cross the threshold into a mythic realm where Dungeons &amp; Dragons 5e reshapes what
+            the cast can do and what the story demands.
           </p>
         </article>
         <article class="card" data-reveal>
           <div class="pill">Tone</div>
           <h3>Cinematic &amp; Character-First</h3>
           <p>
-            Spotlight on choices, consequences, and relationships, backed by atmospheric sound
-            and a Keeper who loves secrets.
+            Choices, consequences, relationships, and atmospheric sound stay at the center of
+            every system shift.
           </p>
         </article>
       </div>
@@ -71,81 +100,76 @@ const base = import.meta.env.BASE_URL;
     <section class="shell" id="systems">
       <div class="section-heading" data-reveal>
         <h2>One Story. Many Systems.</h2>
-        <p>
-          We're live with Pulp Cthulhu now. Drop in new systems as more portals open. Copy a
-          card and fill it in.
-        </p>
       </div>
       <div class="grid cols-2 mt-1-4">
         <article class="card" data-reveal>
           <div class="pill">Chaosium</div>
           <h3>Pulp Cthulhu</h3>
-          <p>
-            High-octane horror, adrenaline-fueled clues, and mortal stakes as the cast probes
-            eldritch mysteries before the portal opens.
-          </p>
+          <p>High-octane horror, adrenaline-fueled clues, and mortal stakes on Earth.</p>
         </article>
         <article class="card" data-reveal>
-          <div class="pill">Future System</div>
-          <h3>More systems coming</h3>
-          <p>
-            Additional game systems will be revealed as the story unfolds.
-          </p>
+          <div class="pill">Wizards of the Coast</div>
+          <h3>Dungeons &amp; Dragons 5e</h3>
+          <p>Myth, magic, and a new set of possibilities beyond the portal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="listen">
+      <div class="section-heading" data-reveal>
+        <h2>Watch and listen</h2>
+      </div>
+      <div class="grid cols-3 mt-1-4">
+        <article class="card link-card" data-reveal>
+          <h3>Video</h3>
+          <p>Watch the full season on the Roll To Discover channel.</p>
+          <a class="button secondary" href={siteLinks.youtube} target="_blank" rel="noopener">YouTube channel</a>
+          <a class="text-link" href={siteLinks.playlist} target="_blank" rel="noopener">Open the full playlist →</a>
+        </article>
+        <article class="card link-card" data-reveal>
+          <h3>Podcast platforms</h3>
+          <p>Use the RSS.com show page or choose a listening app.</p>
+          <div class="link-list">
+            <a href={siteLinks.rss} target="_blank" rel="noopener">RSS.com show page</a>
+            <a href={siteLinks.apple} target="_blank" rel="noopener">Apple Podcasts</a>
+            <a href={siteLinks.spotify} target="_blank" rel="noopener">Spotify</a>
+            <a href={siteLinks.amazon} target="_blank" rel="noopener">Amazon Music</a>
+          </div>
+        </article>
+        <article class="card link-card" data-reveal>
+          <h3>Keep up to date</h3>
+          <p>Join the free Patreon tier for events, bonus content, and updates.</p>
+          <a class="button secondary" href={siteLinks.patreon} target="_blank" rel="noopener">Patreon</a>
+          <a class="text-link" href={`${base}contact`}>Community links →</a>
         </article>
       </div>
     </section>
 
     <section class="shell" id="season">
       <div class="section-heading" data-reveal>
-        <h2>Season 1 - Coming Soon</h2>
-        <p>
-          The first arc bridges rain-slicked streets and a realm of ancient ruins. Stay tuned
-          for the premiere date and episode feed.
-        </p>
-      </div>
-      <div class="two-col mt-1-4">
-        <article class="card" data-reveal>
-          <h3>Launch Preview</h3>
-          <p>
-            We kick off with ordinary lives interrupted: a doctor, a professor, and unlikely
-            allies pulled into something vast. Every leap shifts tone, music, and mechanics.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href={`${base}cast`}>Meet the Cast</a>
-            <a class="button secondary" href={`${base}contact`}>Get launch alerts</a>
-          </div>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Where to Listen</h3>
-          <p>
-            Find Echoes of Elsewhere on your favorite podcast platform.
-          </p>
-          <ul class="list">
-            <li>Apple Podcasts</li>
-            <li>Spotify</li>
-            <li>RSS feed</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="shell" id="why">
-      <div class="section-heading" data-reveal>
-        <h2>Why Two Worlds?</h2>
-        <p>
-          The multiverse isn't a gimmick. It is the core of the story. Each jump tests the cast
-          in new ways and reshapes the rules as the stakes climb.
-        </p>
+        <h2>Season 1 is underway</h2>
       </div>
       <article class="card" data-reveal>
-        <h3>Shift with the story</h3>
+        <h3>Keep moving through the story</h3>
         <p>
-          On Earth, investigations build dread. Beyond the portal, magic and myth demand bold
-          choices. The cast must learn, adapt, and survive what the Keeper has planned.
+          The boundaries between reality and elsewhere are thinning. Myths and legends are coming
+          to life, and ordinary people are being pulled into a dimension-hopping quest.
         </p>
-        <div class="callout">
-          Expect portals, secrets, and the thrill of watching characters navigate systems that
-          evolve with the narrative.
+        <div class="hero-actions">
+          <a class="button" href={siteLinks.rss} target="_blank" rel="noopener">Browse episodes</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="shell" id="keshanar-resources">
+      <div class="section-heading" data-reveal>
+        <h2>Keshanar resources</h2>
+      </div>
+      <article class="card" data-reveal>
+        <h3>Prepare for the next world</h3>
+        <p>Open the Keshanar resource hub for the player-facing materials.</p>
+        <div class="hero-actions">
+          <a class="button" href={`${base}keshanar`}>Open Keshanar resources</a>
         </div>
       </article>
     </section>

@@ -837,8 +837,7 @@ article.card.reveal[data-reveal] {
 }
 
 .link-list a,
-.text-link,
-.back-link {
+.text-link {
   color: var(--arcane-gold);
   font-weight: 700;
   text-decoration: underline;
@@ -846,131 +845,12 @@ article.card.reveal[data-reveal] {
   text-underline-offset: 0.18em;
 }
 
-.resource-section {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.resource-detail {
-  max-width: 1200px;
-}
-
-.resource-banner {
-  padding-top: 2rem;
-  padding-bottom: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.resource-banner img {
-  width: min(100%, 960px);
-  height: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 18px;
-  border: 1px solid rgba(46, 127, 143, 0.25);
-  box-shadow: var(--shadow);
-}
-
-.resource-detail h1 {
-  margin-top: 0.8rem;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 1.4rem;
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 1.2rem;
-}
-
-.resource-grid-scenes {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-}
-
-.resource-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.7rem;
-}
-
-.resource-card h3,
-.resource-card p {
-  margin: 0;
-}
-
-.resource-card .button {
-  margin-top: auto;
-}
-
-.resource-meta,
 .cast-count {
   color: var(--muted);
 }
 
 .cast-portrait {
   object-fit: cover;
-}
-
-.resource-detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-}
-
-.resource-notes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 1.2rem;
-}
-
-.resource-notes h2,
-.resource-map-note h2 {
-  font-size: 1.25rem;
-  margin-top: 0;
-}
-
-.resource-notes p,
-.resource-map-note p {
-  margin-bottom: 0;
-}
-
-.sheet-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-  gap: 1rem;
-}
-
-.sheet-page {
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(46, 127, 143, 0.25);
-  background: rgba(10, 10, 15, 0.65);
-  transition: transform 200ms ease, border-color 200ms ease;
-}
-
-.sheet-page:hover,
-.sheet-page:focus-visible {
-  transform: translateY(-2px);
-  border-color: rgba(201, 168, 106, 0.6);
-}
-
-.sheet-page img {
-  width: 100%;
-  height: auto;
-}
-
-.sheet-page span {
-  display: block;
-  padding: 0.5rem 0.7rem;
-  color: var(--muted);
-  font-size: 0.85rem;
 }
 
 .footer-socials {

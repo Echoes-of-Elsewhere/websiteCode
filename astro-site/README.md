@@ -7,13 +7,12 @@ The Astro app for the Echoes of Elsewhere actual play podcast.
 ```text
 src/
   components/       Shared navigation, footer, hero, portal, and cards
-  data/             Show links, cast interviews, and Keshanar resources
+  data/             Show links and cast interviews
   layouts/          Base document metadata and page shell
-  pages/            Home, cast, community, Keshanar, and legacy alias routes
+  pages/            Home, cast, community, and legacy alias routes
   styles/            Shared theme and responsive layout
 public/
-  downloads/        Original supplied character-sheet PDFs
-  images/           Reused show and character-sheet assets
+  images/           Reused show and cast assets
 scripts/
   verify-build.mjs  Generated-link and asset verification
 ```
@@ -48,7 +47,4 @@ npm run check:a11y:all
 
 - Add or update show destinations in `src/data/site.ts`.
 - Add interview answers in `src/data/cast.ts`. Leave unanswered questions out of a member's `qa` object; the page will only render questions with answers.
-- Add supplied Keshanar PDFs under `public/downloads/keshanar/` and page previews under `public/images/keshanar/`, then update `src/data/keshanar.ts`.
 - Add the contact email and a verified form endpoint to `src/pages/contact.astro` only after they are confirmed.
-
-The Keshanar map pages intentionally link to the current public map pages until full-size map assets are available in this repository.

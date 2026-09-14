@@ -1,5 +1,11 @@
 ---
 const base = import.meta.env.BASE_URL;
+const navLinks = [
+  { label: 'Home', href: base },
+  { label: 'Watch / Listen', href: `${base}#listen` },
+  { label: 'Cast', href: `${base}cast` },
+  { label: 'Contact', href: `${base}contact` },
+] as const;
 ---
 <header>
   <nav class="nav">
@@ -7,11 +13,17 @@ const base = import.meta.env.BASE_URL;
       <img class="logo-mark" src={`${base}images/The Circle of Light Seal - Yellow Transparent.png`} alt="Echoes of Elsewhere seal" width="30" height="30" />
       Echoes of Elsewhere
     </a>
-    <div class="nav-links">
-      <a href={base}>Home</a>
-      <a href={`${base}#listen`}>Watch / Listen</a>
-      <a href={`${base}cast`}>Cast</a>
-      <a href={`${base}contact`}>Contact</a>
+    <div class="nav-links nav-links-desktop">
+      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
     </div>
+    <details class="nav-menu">
+      <summary class="nav-toggle">
+        <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Menu</span>
+      </summary>
+      <div class="nav-links">
+        {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+    </details>
   </nav>
 </header>

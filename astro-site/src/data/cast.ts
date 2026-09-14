@@ -41,7 +41,7 @@ export const castMembers: CastMember[] = [
     name: 'Leah Skye',
     role: 'Blake Emberlich / Fenya Ciarin',
     image: '/images/cast/leah-skye.jpg',
-    appearanceCount: 28,
+    appearanceCount: 32,
     qa: {
       'interested-rpg':
         'Before TTRPGs, I had a long history with video games and MMORPGs in all their facets, from casual roleplay to theorycrafting builds for PVE and competitive PVP. Shoutout to Guild Wars 2 and BioWare games. I grew up a library kid, an endless series of speculative fiction books always close at hand. Critical Role Campaign 1 introduced me to RPGs. The collaborative storytelling and improv, the game mechanics and random chance, hooked me right away. I love stories, and RPGs are one of my favorite mediums.',
@@ -60,11 +60,13 @@ export const castMembers: CastMember[] = [
     name: 'Tony Keoni',
     role: 'Dr Elliot Knight / Illyot Knightreign',
     image: '/images/cast/tony-keoni.jpg',
+    appearanceCount: 32,
   },
   {
     name: 'PG',
     role: 'Professor / Father Gregor',
     image: '/images/cast/pg.jpg',
+    appearanceCount: 32,
   },
   {
     name: 'Shawn Johnson',
@@ -85,7 +87,7 @@ export const castMembers: CastMember[] = [
     name: 'E. D. Jones',
     role: 'Vince Pascal / Rax Koshak',
     image: '/images/cast/ed-jones.jpg',
-    appearanceCount: 28,
+    appearanceCount: 30,
     qa: {
       'interested-rpg':
         'I feel like I have always been interested in RPGs and I cannot think of an inciting incident as to why. It is only in the last handful of years that I have had the opportunity to really dig into a bunch of different systems - Call of Cthulhu, D&D, Pathfinder, Kult: Divinity Lost, Delta Green, and on and on. I particularly love horror gaming just because I think it is fascinating to roleplay how a squishy human would deal with seeing something that twists reality itself into being an unreliable narrator.',
@@ -105,6 +107,6 @@ export const castMembers: CastMember[] = [
     name: 'Finn',
     role: 'Atlas / Uxas',
     image: '/images/cast/finn.png',
-    appearanceCount: 8,
+    appearanceCount: 12,
   },
 ];
